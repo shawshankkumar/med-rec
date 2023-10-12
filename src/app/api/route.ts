@@ -1,8 +1,8 @@
 import neo4j from "neo4j-driver";
 
 const driver = neo4j.driver(
-  process.env.uri,
-  neo4j.auth.basic(process.env.user, process.env.pass)
+  process.env.uri ?? '',
+  neo4j.auth.basic(process.env.user ?? '', process.env.pass ?? '')
 );
 const session = driver.session();
 
