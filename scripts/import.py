@@ -18,7 +18,7 @@ with open('../project_data/drugs_side_effects_drugs_com.csv', 'r') as file:
         }
 
 driver = GraphDatabase.driver(
-    "neo4j+s://86a7898d.databases.neo4j.io", auth=("neo4j", "ISNS7JjtG22Atg_6I6PVvg6P9b1wIpWN1Z7HsOVdkEA"))
+    "neo4j+s://3366fccf.databases.neo4j.io", auth=("neo4j", "YB9Z_xLcWkOs6mb4nlPBywSlZs983Hmf3Ns4_WqENvI"))
 
 # define a function to create a node
 
@@ -35,3 +35,4 @@ for key, value in drugs.items():
     with driver.session() as session:
         session.execute_write(
             create_nodes, key, drugs[key]["medical_condition"], drugs[key]["drug_classes"], drugs[key]["description"])
+driver.close()
