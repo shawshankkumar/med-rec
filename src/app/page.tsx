@@ -1,6 +1,5 @@
 import { Footer } from "@/components/Footer";
 import { InputArea } from "@/components/InputArea";
-import Image from "next/image";
 
 export default function Home() {
   return (
