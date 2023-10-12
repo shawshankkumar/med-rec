@@ -4,9 +4,14 @@ import { TableData } from "./Table";
 
 export const InputArea = () => {
   const [medicine, setMedicine] = useState("");
+  const [search, setSearch] = useState([]);
   function handleSubmit(e: any) {
     e.preventDefault();
-    console.log(medicine);
+    fetch("/api?name=" + medicine).then((res) => {
+      res.json().then((e) => {
+        setSearch(e.data);
+      });
+    });
   }
 
   return (
@@ -24,7 +29,7 @@ export const InputArea = () => {
           Search Medicine
         </button>
       </div>
-      <TableData />
+      <TableData search={search} />
     </>
   );
 };
