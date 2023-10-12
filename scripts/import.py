@@ -8,7 +8,7 @@ def removeWhiteSpace(x): return x.strip()
 
 
 # open the CSV file
-with open('data.csv', 'r') as file:
+with open('../project_data/drugs_side_effects_drugs_com.csv', 'r') as file:
     reader = csv.DictReader(file)
     for row in reader:
         drugs[row["drug_name"]] = {
