@@ -21,10 +21,10 @@ export async function GET(request: Request) {
   );
   const data = result.records.map((record) => {
     return {
-        name: record._fields[1].properties.name,
-        description: record._fields[1].properties.description,
-        drugClasses: record._fields[1].properties.drugClasses[0],
-        medicalCondition: record._fields[2],
+        name: (record as any)._fields[1].properties.name,
+        description: (record as any)._fields[1].properties.description,
+        drugClasses: (record as any)._fields[1].properties.drugClasses[0],
+        medicalCondition: (record as any)._fields[2],
     }
   });
   return Response.json({ message: "ok", data });
