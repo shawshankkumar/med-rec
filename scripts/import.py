@@ -18,7 +18,7 @@ with open('../project_data/drugs_side_effects_drugs_com.csv', 'r') as file:
         }
 
 driver = GraphDatabase.driver(
-    "neo4j+s://3366fccf.databases.neo4j.io", auth=("neo4j", "YB9Z_xLcWkOs6mb4nlPBywSlZs983Hmf3Ns4_WqENvI"))
+    "neo4j+s://xx.xx.neo4j.io", auth=("neo4j", "xxx"))
 
 # define a function to create a node
 
