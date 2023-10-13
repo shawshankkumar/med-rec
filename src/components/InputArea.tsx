@@ -5,11 +5,14 @@ import { TableData } from "./Table";
 export const InputArea = () => {
   const [medicine, setMedicine] = useState("");
   const [search, setSearch] = useState([]);
+  const [loading, setLoading] = useState(false);
   function handleSubmit(e: any) {
     e.preventDefault();
+    setLoading(true);
     fetch("/api?name=" + medicine).then((res) => {
       res.json().then((e) => {
         setSearch(e.data);
+        setLoading(false);
       });
     });
   }
@@ -22,12 +25,17 @@ export const InputArea = () => {
           placeholder="Medicine Name"
           onChange={(e) => setMedicine(e.target.value)}
         />
-        <button
+        {!loading && <button
           className="h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF] rounded-full text-black"
           onClick={handleSubmit}
         >
           Search Medicine
-        </button>
+        </button>}
+        {loading && <button
+          className="h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF] rounded-full text-black"
+        >
+          Searching Medicine...
+        </button>}
       </div>
       <TableData search={search} />
     </>
