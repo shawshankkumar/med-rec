@@ -5,7 +5,7 @@ import { TableData } from "./Table";
 export const InputArea = () => {
   const [medicine, setMedicine] = useState("");
   const [search, setSearch] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
