@@ -6,15 +6,25 @@ export const InputArea = () => {
   const [medicine, setMedicine] = useState("");
   const [search, setSearch] = useState([]);
   const [loading, setLoading] = useState(false);
+  const[error,setError]= useState(null);
   function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
-    fetch("/api?name=" + medicine).then((res) => {
-      res.json().then((e) => {
+    fetch("/nonexistent-endpoint").then((res) => {
+      
+        if (!res.ok) {
+          throw new Error("could not fetch data");
+        }
+        return res.json();
+      })
+      .then((e) => {
         setSearch(e.data);
         setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message); 
+        setLoading(false);
       });
-    });
   }
 
   return (
@@ -37,6 +47,7 @@ export const InputArea = () => {
           ) : "Search Medicine"}
         </button>
       </div>
+      {error && <p>Error: {error}</p>}
       <TableData search={search} />
     </>
   );
