@@ -10,7 +10,7 @@ export const InputArea = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
-    fetch("/nonexistent-endpoint").then((res) => {
+    fetch("/api?name=" + medicine).then((res) => {
       
         if (!res.ok) {
           throw new Error("could not fetch data");
